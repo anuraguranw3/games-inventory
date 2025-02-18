@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Item</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <%- include("nav") %>
+    <%- include("newItemForm", { categories: categories }) %>
+
+      <script>
+        document.getElementById('newItemForm').addEventListener('submit', function (event) {
+          const checkboxes = document.querySelectorAll('input[name="categories[]"]');
+          const checked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+          if (!checked) {
+            event.preventDefault();
+            alert('Please select at least one category.');
+          }
+        });
+      </script>
+</body>
+
+</html>

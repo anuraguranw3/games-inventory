@@ -1,0 +1,25 @@
+<form class="new-item-form" id="newItemForm" action="/new-item" method="POST">
+  <label for="name">Name*</label>
+  <input type="text" name="name" id="name" placeholder="eg-Free Fire" required>
+  <label for="description">Description*</label>
+  <textarea name="description" id="description" placeholder="Description"
+    required></textarea>
+  <label for="publisher">Publisher</label>
+  <input type="text" name="publisher" id="publisher" placeholder="eg-Garena">
+  <label for="release">Release Date</label>
+  <input type="date" name="release" id="release">
+
+  <label for="categories">Categories</label>
+  <div id="categories">
+    <% categories.forEach(category=> { %>
+      <label>
+        <input type="checkbox" name="categories[]" value="<%= category.id %>">
+        <%= category.name %>
+      </label>
+      <% }) %>
+      <a href="/new-category">Add new category</a>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
